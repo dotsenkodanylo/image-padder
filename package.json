@@ -1,0 +1,11 @@
+{
+  "name": "image-padder",
+  "version": "1.0.0",
+  "description": "Image Padding script to allow for quick framing/editing of images.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Danylo Dotsenko",
+  "license": "ISC"
+}

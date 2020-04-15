@@ -1,17 +1,26 @@
-// Read input arguments from the command line.
+let fs = require('fs');
 let input = process.argv.slice(2);
 
-// Check if single input is given.
-checkIfSingleInput = (args) => {
+
+const checkIfSingleInput = (args) => new Promise((resolve, reject) => {
     if (args.length > 0) {
-        return args.length === 1;
+        if (args.length !== 1) {
+            reject(`Multiple arguments detected; please enter a single image directory!`);
+        } else {
+            console.log('Thank you!; processing...');
+            resolve(args[0]);
+        }
 
     } else {
-        return null;
+        reject('No input directory detected; Please enter a directory!');
     }
-};
-// Log out test function above. 
-console.log(checkIfSingleInput(input));
+});
 
-
-//console.log(`Hello World ${args}`);
+checkIfSingleInput(input).then(directory => {
+    fs.readdir(directory, (err, files) => {
+        console.log(files);
+    });
+})
+    .catch(error => {
+        console.log(error);
+    });

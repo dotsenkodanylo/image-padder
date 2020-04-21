@@ -24,6 +24,12 @@ libraries.
 *   Once the input has been validated, the script uses calculated values (based on personal visual 
     preferences) to apply corresponding border style changes to the image and rewrites it as required. 
 ---
+### ~ Execution ~
+*   To run the script, ensure you have 'ImageMagik' and 'GraphikMagik' installed locally first.
+*   Install required dependencies: `npm i`
+*   Run the script: `node cli.js /path/to/image.jpg`
+*   The original image should now be processed and edited, as required. 
+---
 ### ~ Status and Incoming Changes ~ 
 As it stands, the script is static; it applies the same styling to every image: a thin black border, 
 followed by a major white wrapping border. For the time being, there is no other processing that will

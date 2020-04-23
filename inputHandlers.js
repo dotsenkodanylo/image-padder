@@ -16,7 +16,8 @@ const checkIfSingleInput = (input) => new Promise((resolve, reject) => {
             resolve(input[0]);
         }
     } else {
-        reject('No input directory detected; Please enter a directory!');
+        reject('No input directory detected; Please enter a directory or' +
+            ' image path!');
     }
 });
 

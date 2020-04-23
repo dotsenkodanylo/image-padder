@@ -35,6 +35,9 @@ libraries.
 *   Install required dependencies: `npm i`
 *   Run the script: `node cli.js /path/to/image.jpg`
 *   The original image should now be processed and edited, as required. 
+*   Example: running `node cli.js /assets/test/city.jpg` produces the following changes
+
+![Demo](image-padder-demo.jpg)
 
 ---
 

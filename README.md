@@ -1,7 +1,9 @@
 # Image Padder v1.0.0
 'Image Padder' is a basic, lightweight Node-based image modifying script that allows for a streamlining of 
-custom image modifications, currently based on the basic terminal/shell CLI. 
+custom image modifications, currently based on the basic terminal/shell CLI.
+ 
 ---
+
 ### ~ Backstory ~
 I'm really into photography and unfortunately due to whatever subset of OCD that I have, I've always been
 incredibly nitpicky about how I want my pictures to look. I've been shooting for about 4 years and, again,
@@ -11,7 +13,9 @@ the images and apply the border styling that I've re-developed over and over aga
 can really soak up your time and takes away from the enjoyment of using the pictures for whatever purpose. 
 As such, I decided to streamline the process the best way I know how; **scripting it**. And so here 
 we are today. 
+
 ---
+
 ### ~ Description and Functionality ~
 The script itself is a simple executable JS file, run through NodeJS and with a very minor set of 
 libraries. 
@@ -23,13 +27,17 @@ libraries.
     image modifications take place. 
 *   Once the input has been validated, the script uses calculated values (based on personal visual 
     preferences) to apply corresponding border style changes to the image and rewrites it as required. 
+
 ---
+
 ### ~ Execution ~
 *   To run the script, ensure you have 'ImageMagik' and 'GraphikMagik' installed locally first.
 *   Install required dependencies: `npm i`
 *   Run the script: `node cli.js /path/to/image.jpg`
 *   The original image should now be processed and edited, as required. 
+
 ---
+
 ### ~ Status and Incoming Changes ~ 
 As it stands, the script is static; it applies the same styling to every image: a thin black border, 
 followed by a major white wrapping border. For the time being, there is no other processing that will

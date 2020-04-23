@@ -18,13 +18,9 @@ let
 // Running main editing script by executing both validation promises
 // sequentially, where currently the script only accepts a single image.
 inputHandler.checkIfSingleInput(input).then(path => {
-    inputHandler.checkIfValidInput(path.toString()).then(type => {
-
-        if (type === 'image') {
-            imageEditor.editImage(path);
-        } else {
-            console.log(type + ' has resolved to an directory.');
-        }
+    inputHandler.checkIfValidInput(path.toString()).then(images => {
+        // Configure as a promise
+        imageEditor.editImages(images);
     }).catch(e => {
         console.log(e);
     });

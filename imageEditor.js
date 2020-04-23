@@ -1,16 +1,16 @@
 // Importing the File System and GraphiksMagik libraries.
 const gm = require('gm');
 
-const editImage = (imagePath) => {
+const editImages = (images) => {
 
-    let
-        backdropDim = {
-            width: null,
-            height: null
-        },
+    let backdropDim = {
+        width: null,
+        height: null
+    };
 
-        imageDimensions = new Promise(resolve => {
-            gm(imagePath)
+    images.forEach(img => {
+        let imageDimensions = new Promise(resolve => {
+            gm(img)
                 .size(function (err, size) {
 
                     if (!err) {
@@ -22,24 +22,25 @@ const editImage = (imagePath) => {
                 });
         });
 
-    imageDimensions.then(dimensions => {
+        imageDimensions.then(dimensions => {
 
-        gm(imagePath)
-            .borderColor('black')
-            .border(8, 8)
-            .borderColor('white')
-            .border(dimensions.width, dimensions.height)
-            .write(`${imagePath}`, function (err) {
+            gm(img)
+                .borderColor('black')
+                .border(8, 8)
+                .borderColor('white')
+                .border(dimensions.width, dimensions.height)
+                .write(`${img}`, function (err) {
 
-                if (!err) {
-                    console.log('Image editing complete!')
-                } else {
-                    console.log(err);
-                }
-            });
+                    if (!err) {
+                        console.log(img + ' successfully edited!')
+                    } else {
+                        console.log('Issue with ' + img);
+                    }
+                });
+        })
     })
 }
 
 module.exports = {
-    editImage: editImage
+    editImages: editImages
 }

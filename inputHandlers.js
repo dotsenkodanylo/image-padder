@@ -1,5 +1,11 @@
 const fs = require('fs');
 
+const checkIfImage = (image) => {
+    let imageReg = /[\/.](gif|jpg|jpeg|tiff|png)$/i;
+
+    return imageReg.test(image);
+};
+
 // Validation function that ensures that the input passed in is a single
 // argument, otherwise reject the script.
 const checkIfSingleInput = (input) => new Promise((resolve, reject) => {
@@ -18,22 +24,31 @@ const checkIfSingleInput = (input) => new Promise((resolve, reject) => {
 // file, or if it is a directory; otherwise, reject the script. Also setting
 // the global fileType boolean to track whether the input is a single image.
 const checkIfValidInput = (input) => new Promise((resolve, reject) => {
-    // Regex expression to validate image extension(s).
-    let imageReg = /[\/.](gif|jpg|jpeg|tiff|png)$/i;
+    let images = [];
 
-    if (imageReg.test(input)) {
+    if (checkIfImage(input)) {
         if (fs.existsSync(input)) {
-            resolve('image');
+            images.push(input);
+            resolve(images);
         } else {
-            reject('Image does not exist; please try again!');
+            reject("Image not found!");
         }
     } else {
-        try {
-            // FileSystem to check if the input passed in is an existing
-            // directory.
-            fs.statSync(input);
-            resolve('directory');
-        } catch (e) {
+        if (fs.existsSync(input)) {
+            fs.readdir(input, (err, files) => {
+                files.forEach(file => {
+                    if (checkIfImage(file)) {
+                        images.push(input + file);
+                    }
+                });
+
+                if (images.length === 0) {
+                    reject('No images found in directory!');
+                }
+
+                resolve(images);
+            });
+        } else {
             reject('Directory does not exist; please try again!');
         }
     }

@@ -48,7 +48,7 @@ take place. Again, the scope of this project is to allow for a streamline of ima
 editing to occur, and it is not meant to act as a fully fledged image processing/editing software. 
 
 That being said, some future changes include:
-*   Secondary edit pass; allow for a square-ing of images (will provide imagery to describe visaully).
+*   Secondary edit pass; allow for a square-ing of images (will provide imagery to describe visually).
 *   Further developer CLI for narrowing down some custom changes, as well as recursion for rejected input.
 *   Potential deployment and hosting (escapes the scope of the project however).
 *   Dynamic naming convention for file changes. 
